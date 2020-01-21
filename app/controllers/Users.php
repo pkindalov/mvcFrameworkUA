@@ -119,9 +119,17 @@ class Users extends Controller
                 $data['email_err'] = 'Please enter email';
             }
 
+
             //Validate Password
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter passord';
+            }
+
+             //Check for user/email
+             if($this->userModel->findUserByEmail($data['email'])){
+                //User found
+            } else {
+                $data['email_err'] = 'No user found.';
             }
 
             //Make sure errors are empty
@@ -130,7 +138,17 @@ class Users extends Controller
                 empty($data['password_err'])
             ) {
                 //Validated
-                die('SUCCESS');
+               //Check and set logged users
+               $loggedUser = $this->userModel->login($data['email'], $data['password']);
+
+                if($loggedUser){
+                    //Create Session
+                    die('SUCCESS');
+                } else {
+                    $data['password_err'] = 'Email or Password incorrect';
+                    $this->view('users/login', $data);
+                }
+
             } else {
                 $this->view('users/login', $data);
             }
