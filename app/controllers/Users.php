@@ -11,10 +11,10 @@ class Users extends Controller
         //Check for post
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Proces form
-            
+
             //Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            
+
 
             $data = [
                 'name' => trim($_POST['name']),
@@ -26,7 +26,7 @@ class Users extends Controller
                 'password_err' => '',
                 'confirm_password_err' => ''
             ];
-            
+
             //Validate Name
             if (empty($data['name'])) {
                 $data['name_err'] = 'Please enter name';
@@ -36,11 +36,9 @@ class Users extends Controller
                 $data['email_err'] = 'Please enter email';
             } else {
                 //Check email
-                if($this->userModel->findUserByEmail($data['email'])){
+                if ($this->userModel->findUserByEmail($data['email'])) {
                     $data['email_err'] = 'This email is already taken. Please enter another.';
                 }
-
-
             }
 
             //Validate Password
@@ -72,8 +70,9 @@ class Users extends Controller
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //Register user
-                if($this->userModel->register($data)){
-                   redirect('users/login');
+                if ($this->userModel->register($data)) {
+                    flash('register_success', 'You are registered successfully. You can login in your profile now');
+                    redirect('users/login');
                 } else {
                     die('Something goes wrong');
                 }
@@ -81,9 +80,6 @@ class Users extends Controller
             } else {
                 $this->view('users/register', $data);
             }
-
-
-
         } else {
             //Init data
             $data = [
@@ -107,18 +103,18 @@ class Users extends Controller
         //Check for post
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Proces form
-              //Sanitize POST data
-              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-              $data = [
-                  'email' => trim($_POST['email']),
-                  'password' => trim($_POST['password']),
-                  'email_err' => '',
-                  'password_err' => ''
-              ];
 
-                //Validate Email
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'email_err' => '',
+                'password_err' => ''
+            ];
+
+            //Validate Email
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter email';
             }
@@ -126,10 +122,10 @@ class Users extends Controller
             //Validate Password
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter passord';
-            } 
+            }
 
-              //Make sure errors are empty
-              if (
+            //Make sure errors are empty
+            if (
                 empty($data['email_err']) &&
                 empty($data['password_err'])
             ) {
@@ -138,7 +134,6 @@ class Users extends Controller
             } else {
                 $this->view('users/login', $data);
             }
-  
         } else {
             //Init data
             $data = [
