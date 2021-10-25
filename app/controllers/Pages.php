@@ -9,8 +9,8 @@ class Pages extends Controller implements MainFunctionalities
     {
         session_activity_checker();
         $data = [
-            'title' => 'Php Simple Framework',
-            'description' => 'Simple social network built on Php simple MVC framework'
+            'title' => 'PHP Simple Framework',
+            'description' => 'Very small custom framework for creating a small projects based on MVC pattern.'
         ];
         $this->view('pages/index', $data);
     }
@@ -20,7 +20,7 @@ class Pages extends Controller implements MainFunctionalities
         session_activity_checker();
         $data = [
             'title' => 'About Us',
-            'description' => 'App to share posts with other users'
+            'description' => 'Very small custom framework for creating a small projects based on MVC pattern.'
         ];
         $this->view('pages/about', $data);
     }

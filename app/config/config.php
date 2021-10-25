@@ -12,7 +12,7 @@
     define('URLROOT', 'http://localhost/mvcframework'); 
 
     //Site name
-    define('SITENAME', 'MVC Framework');
+    define('SITENAME', 'Simple MVC Framework');
 
     //Images
     define('IMAGE_MAX_SIZE', 2097152);

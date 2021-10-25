@@ -107,3 +107,8 @@ function subtractTime()
 {
     return time() - 3600;
 }
+
+function getLoggedUserEmail() 
+{
+    return $_SESSION['user_email'];
+}
