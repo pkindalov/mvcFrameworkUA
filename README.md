@@ -22,7 +22,7 @@ composer, facebook and google login buttons, different helper functions in helpe
 
 and then you must have a users table. I uploaded this table in sql executable file in db tables folder.
 
-/There are some example or testing data and you can delete it when you want/
+/There are some example or testing data and you can delete it when you want. All testing users are with passwords 1234567/
 
 3.You must your own settings here or to use the default one. For sending emails, Facebook login and
 Google login there are no default settings available. If you want to use these features you must create an app in facebook or google firstly. You can follow their documentation.
