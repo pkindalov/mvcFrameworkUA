@@ -24,5 +24,12 @@ and then you must have a users table. I uploaded this table in sql executable fi
 
 /There are some example or testing data and you can delete it when you want/
 
+3.You must your own settings here or to use the default one. For sending emails, Facebook login and
+Google login there are no default settings available. If you want to use these features you must create an app in facebook or google firstly. You can follow their documentation.
+Other example settings are given below on the image.
 
 ![](assets/20211026_114951_image.png)
+
+4. You must change .htaccess in public directory adding your project folder name.
+
+![](assets/20211026_203027_image.png)
