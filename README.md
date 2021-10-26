@@ -9,14 +9,12 @@ I had updated slightly this version from the original of the Brad from his cours
 composer, facebook and google login buttons, different helper functions in helpers folder, user's settings page where you can change your profile photo, reset the password, change the password or to delete permamently your account. Refactored a little the registration and login logic. Updated the main views adding more icons.
 
 
-![](assets/20211026_110219_Screenshot_281.png)
+![](assets/20211026_112436_Screenshot_281.png)
 
 
-![](assets/20211026_110247_Screenshot_282.png)
+![](assets/20211026_112846_Screenshot_281.png)
 
 
-
-
-![](assets/20211026_110308_Screenshot_283.png)
+![](assets/20211026_112931_image.png)
 
 ---
