@@ -7,3 +7,8 @@ and creating it mainly for studiyng purpose. It is based on MVC pattern and it i
 I had updated slightly this version from the original of the Brad from his course. I added also some stuffs like
 
 composer, facebook and google login buttons, different helper functions in helpers folder, user's settings page where you can change your profile photo, reset the password, change the password or to delete permamently your account. Refactored a little the registration and login logic. Updated the main views adding more icons.
+
+
+![](assets/20211026_105957_image.png)
+
+---
