@@ -16,7 +16,7 @@ composer, facebook and google login buttons, different helper functions in helpe
 
 # What are you need to run this locally?
 
-1.Working server + PHP + MySQL /you can install packages separately or use xampp, wampp etc.../
+1.Working server + PHP + MySQL /you can install packages separately or use xampp, wampp etc.../ and composer installed to install dependencies in composer.json
 
 2.Database and tables. The settings are in config file. You must create database about this project /using phpmyadmin, heidiSQL etc.../
 
@@ -33,3 +33,12 @@ Other example settings are given below on the image.
 4. You must change .htaccess in public directory adding your project folder name.
 
 ![](assets/20211026_203027_image.png)
+
+5. Install all dependencies with composer - you can turn on terminal in the current project directory ant to run
+   composer install in the command line. Then the installation must begin.
+
+Before installing the dependencies you can check them in composer.json file
+
+![](assets/20211026_223333_image.png)
+
+and if you don't need you just can delete some of them. If you do it, then you must execute composer update.
