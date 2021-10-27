@@ -14,7 +14,6 @@ composer, facebook and google login buttons, different helper functions in helpe
 
 ![](assets/20211026_112931_image.png)
 
-
 # What are you need to run this locally?
 
 1.Working server + PHP + MySQL /you can install packages separately or use xampp, wampp etc.../ and composer installed to install dependencies in composer.json
@@ -61,7 +60,6 @@ All users default password is 1234567.
 
 **assets** folder is not a part from the project. It just contains images from the readme file used by the markdown editor to show them. You can delete it after download the project together with the Readme.md
 
-
 # About Project Structure
 
 1. Everything start from the index.php in the main directory. There the main Core class is called from the bootstrap.php
@@ -80,3 +78,5 @@ All users default password is 1234567.
    And the second one to help me with the pagination.
 
    Of course you can freely remove or adding yours. If you don't want to use some of them you just can delete firstly their reference in bootstrap.php and then delete the helper file you don't need. And contrary... if you want to use your own firstly you must add the file in helpers folder and then to add reference in bootstrap.php like the image on bootstrap.php file.
+
+2.The Core class handle actions about loading the necessairy controller, calling the necessairy method from the selected controller and to pass it data from the url. Firstly, the url is splitting by '/' and the first data in array is the name of the controller and the second one the name of the method of this controller. So, if the method is not found from the controller then the default one index will be loaded. If the default index method not exists then the error will be thrown.

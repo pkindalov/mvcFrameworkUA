@@ -5,11 +5,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-class Users extends Controller
+class Users extends Controller implements MainFunctionalities
 {
     public function __construct()
     {
         $this->userModel = $this->model('User');
+    }
+
+    public function index(){
+        redirect('');
     }
 
     public function register()
