@@ -89,14 +89,31 @@ You can see and follow like example the current controllers
 
 4.Models - They are located in models folder and then there are nothing special to do. When create your own you can make an instance of db class in the constructor just like the User model currently is. Just follow the User model like example.
 
-5.Views - //TODO to finish this later
+5.Views - views are located in views folder. They are files served to show some information /extracted from db for example/. They can contains html, css etc.. In this folder there is one another called inc. This is folder containing templated for header, footer and navbar templates. The idea here is simple, because every single page need from header, footer and also often from navigation these three parts are created separately and ready to be used, inclucing them in other view files. See some of the other views files located out of inc folder for example. In footer and header parts are included bootstrap and jquery. Feel free to change them whatever you want.
+
 
 # Suggested workflow
 
 This is just an example. Probably you have a better way but anyway.. So, for example if you have some simple project about listing some posts or something like that may be the following steps would be useful about the workflow
 
 1. Design and creating DB and DB tables for the current project - what information to keep, what fields, relationship between them etc..
-2. After the step of the planning of the DB stuffs and downloaded this small mvc project and after clean unnecessary stuffs like composer packages, assets folder about documentation, deleting some helper files(don't forget to remove their reference in bootstrap.php) etc.. you can create the appropriete controller, for this example Posts controller and extends the Base controller class and implements the MainFunctionality interface and if you want to list, delete, edit, create post in this controller then you must implement and Crud interface too.
-3. After the controller is created, you need some way to put and to get information about posts , so it is time to create a model Post, where to put methods about extracting information from the db, saving post there etc..
-   Here, don't forget to make an instance of the Database clase in the constructor. It will use it for querying the db. You can see User model for example.
-4. After creating or may be getting information about post in controller via the model, now it is time to render this information in view. In views folder you can make folder posts and then to make a new view list.php for example where you will put your html and will render the information extracted from db via model and then passed by the view from the controller. You can see examples in views views folder.
+
+   ![](assets/20211027_172904_image.png)
+
+
+2.After the step of the planning of the DB stuffs and downloaded this small mvc project and after clean unnecessary stuffs like composer packages, assets folder about documentation, deleting some helper files(don't forget to remove their reference in bootstrap.php) etc.. you can create the appropriete controller, for this example Posts controller and extends the Base controller class and implements the MainFunctionality interface and if you want to list, delete, edit, create post in this controller then you must implement and Crud interface too.
+
+
+![](assets/20211027_173008_image.png)
+
+3.After the controller is created, you need some way to put and to get information about posts , so it is time to create a model Post, where to put methods about extracting information from the db, saving post there etc..
+Here, don't forget to make an instance of the Database clase in the constructor. Also, don't forget to get newly created model in your controller like in the previous image. It will use it for querying the db. You can see User model for example.
+
+
+![](assets/20211027_174758_image.png)
+
+
+4.After creating or may be getting information about post in controller via the model, now it is time to render this information in view. In views folder you can make folder posts and then to make a new view list.php for example where you will put your html and will render the information extracted from db via model and then passed by the view from the controller. You can see examples in views views folder.
+
+
+![](assets/20211027_174916_image.png)
