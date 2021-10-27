@@ -14,6 +14,7 @@ composer, facebook and google login buttons, different helper functions in helpe
 
 ![](assets/20211026_112931_image.png)
 
+
 # What are you need to run this locally?
 
 1.Working server + PHP + MySQL /you can install packages separately or use xampp, wampp etc.../ and composer installed to install dependencies in composer.json
@@ -46,7 +47,6 @@ composer install in the console/command prompt in the current directory. Where t
 
 6.Next final step is to trying to run project. Try to open http://localhost/mvcframework in your browser. If everything is ok you must see like the following image
 
-
 ![](assets/20211027_133409_image.png)
 
 From the db tables folder , if you executed the .sql file, you must have default table users with some testing users.
@@ -58,3 +58,25 @@ If you want to explore more you can use one of the three testing accounts:
 * user_test@gmail.com
 
 All users default password is 1234567.
+
+**assets** folder is not a part from the project. It just contains images from the readme file used by the markdown editor to show them. You can delete it after download the project together with the Readme.md
+
+
+# About Project Structure
+
+1. Everything start from the index.php in the main directory. There the main Core class is called from the bootstrap.php
+
+   ![](assets/20211027_140140_image.png)
+
+   In bootstrap.php the main core classes, configuration file and the helper functions are loaded
+
+   ![](assets/20211027_140332_image.png)
+
+   The helpers are just a small functions to help you with the logic. They can be used in models, controllers and in the views. In the following image I am showing example of the content_helpers.php file
+
+   ![](assets/20211027_142350_image.png)
+
+   You can see that there are two functions to help me with the content - the first one is for adding bootstrap cards
+   And the second one to help me with the pagination.
+
+   Of course you can freely remove or adding yours. If you don't want to use some of them you just can delete firstly their reference in bootstrap.php and then delete the helper file you don't need. And contrary... if you want to use your own firstly you must add the file in helpers folder and then to add reference in bootstrap.php like the image on bootstrap.php file.

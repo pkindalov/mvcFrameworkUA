@@ -54,11 +54,6 @@ class Core
     public function getURL()
     {
         if (isset($_GET['url'])) {
-
-           
-
-            //    print_r($_GET['url']);
-            //    print_r($_SERVER["QUERY_STRING"]);
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
