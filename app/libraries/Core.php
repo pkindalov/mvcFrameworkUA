@@ -13,6 +13,7 @@ class Core
 
     public function __construct()
     {
+        try {
         // print_r($this->getURL());
         $url = $this->getURL();
 
@@ -42,31 +43,29 @@ class Core
         }
 
         //Get params
-        
         $this->params = $url ? array_values($url) : ['data' => ''];
        
-
         //Call a callback with array of params
-
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     public function getURL()
     {
-        if (isset($_GET['url'])) {
-
-           
-
-            //    print_r($_GET['url']);
-            //    print_r($_SERVER["QUERY_STRING"]);
-            $url = rtrim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            if (strpos($_SERVER["QUERY_STRING"], "&") !== false) {
-                $url[] = $_SERVER["QUERY_STRING"];
+        try {
+            if (isset($_GET['url'])) {
+                $url = rtrim($_GET['url'], '/');
+                $url = filter_var($url, FILTER_SANITIZE_URL);
+                $url = explode('/', $url);
+                if (strpos($_SERVER["QUERY_STRING"], "&") !== false) {
+                    $url[] = $_SERVER["QUERY_STRING"];
+                }
+                return $url;
             }
-
-            return $url;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 }

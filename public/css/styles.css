@@ -1,0 +1,36 @@
+.strokedText {
+	text-decoration: line-through;
+}
+.winningText,
+.loosingText {
+	color: rgb(0, 0, 0);
+}
+.hideMe {
+	visibility: hidden;
+}
+.showMe {
+	visibility: 'block';
+}
+.avatar {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+.avatarBigger, .avatarBiggerNoHover {
+	vertical-align: middle;
+	width: 200px;
+	height: 200px;
+    border: 6px solid rgb(209, 208, 208);
+	border-radius: 50%;
+}
+
+.avatarBigger:hover{
+    cursor: pointer;
+}
+
+.chart {
+	width: 100%; 
+	min-height: 450px;
+  }

@@ -12,3 +12,13 @@
 <body>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <div class="container">
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center" id="notificationBox">
+        <?php echo flash('notifycationBox'); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+        <div id="spinner" class="spinner-border text-primary hideMe"></div>
+    </div>
+</div>
