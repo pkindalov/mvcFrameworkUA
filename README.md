@@ -80,3 +80,7 @@ All users default password is 1234567.
    Of course you can freely remove or adding yours. If you don't want to use some of them you just can delete firstly their reference in bootstrap.php and then delete the helper file you don't need. And contrary... if you want to use your own firstly you must add the file in helpers folder and then to add reference in bootstrap.php like the image on bootstrap.php file.
 
 2.The Core class handle actions about loading the necessairy controller, calling the necessairy method from the selected controller and to pass it data from the url. Firstly, the url is splitting by '/' and the first data in array is the name of the controller and the second one the name of the method of this controller. So, if the method is not found from the controller then the default one index will be loaded. If the default index method not exists then the error will be thrown.
+
+3.About Controllers - The Base controller class is located in folder library. Every newly created controller extend it to use the main important PROTECTED(only classes which extend Core class have access to the method) methods about loading the necessairy model and view. I created two additional interfaces about controller - one is called MainFunctionalities and it contains the main default method for all controllers - index. The second one is called Crud which contains main crud functions - created, read, update, delete. So if you want to use them you just have to implements them like on the following image
+
+![](assets/20211027_153348_image.png)
