@@ -84,3 +84,16 @@ All users default password is 1234567.
 3.About Controllers - The Base controller class is located in folder library. Every newly created controller extend it to use the main important PROTECTED(only classes which extend Core class have access to the method) methods about loading the necessairy model and view. I created two additional interfaces about controller - one is called MainFunctionalities and it contains the main default method for all controllers - index. The second one is called Crud which contains main crud functions - created, read, update, delete. So if you want to use them you just have to implements them like on the following image
 
 ![](assets/20211027_153348_image.png)
+
+You can see and follow like example the current controllers
+
+4.Models - They are located in models folder and then there are nothing special to do. When create your own you can make an instance of db class in the constructor just like the User model currently is. Just follow the User model like example.
+
+5.Views - //TODO to finish this later
+
+# Suggested workflow
+
+This is just an example. Probably you have a better way but anyway.. So, for example if you have some simple project about listing some posts or something like that may be the following steps would be useful about the workflow
+
+1. Design and creating DB and DB tables for the current project - what information to keep, what fields, relationship between them etc..
+2. After the step of the planning of the DB stuffs and downloaded this small mvc project and after clean unnecessary stuffs like composer packages, assets folder about documentation, deleting some helper files(don't forget to remove their reference in bootstrap.php) etc.. you can create the appropriete controller, for this example Posts controller and extends the Base controller class and implements the MainFunctionality interface and if you want to list, delete, edit, create post in this controller then you must implement and Crud interface too.
