@@ -41,4 +41,20 @@ Before installing the dependencies you can check them in composer.json file
 
 ![](assets/20211026_223333_image.png)
 
-and if you don't need you just can delete some of them. If you do it, then you must execute composer update.
+and if you don't need you just can delete some of them. If you like to use any of them you must firstly execute
+composer install in the console/command prompt in the current directory. Where the composer.json file is located.
+
+6.Next final step is to trying to run project. Try to open http://localhost/mvcframework in your browser. If everything is ok you must see like the following image
+
+
+![](assets/20211027_133409_image.png)
+
+From the db tables folder , if you executed the .sql file, you must have default table users with some testing users.
+
+If you want to explore more you can use one of the three testing accounts:
+
+* owner_test@gmail.com
+* admin_test@gmail.com
+* user_test@gmail.com
+
+All users default password is 1234567.
