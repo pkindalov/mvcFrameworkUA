@@ -1,6 +1,8 @@
 <?php
 class Settings extends Controller implements MainFunctionalities, Crud
 {
+    private $userModel;
+    
     public function __construct()
     {
         $this->userModel = $this->model('User');

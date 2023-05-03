@@ -7,6 +7,9 @@ use PHPMailer\PHPMailer\Exception;
 
 class Users extends Controller implements MainFunctionalities
 {
+
+    private $userModel;
+
     public function __construct()
     {
         $this->userModel = $this->model('User');
