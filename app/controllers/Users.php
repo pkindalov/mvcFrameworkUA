@@ -1,6 +1,5 @@
 <?php
 
-use Facebook\Authentication\AccessToken;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -76,14 +75,14 @@ class Users extends Controller implements MainFunctionalities
             }
             $data = getUserData();
             // beautifulPrintArr($data);
-            $fb = fb_config();
-            if($fb) {
-                $helper = $fb->getRedirectLoginHelper();
-                $permissions = ['email']; // Optional permissions
-                $loginUrl = $helper->getLoginUrl(URLROOT . '/users/fb_callback', $permissions);
-                $data['has_fb_login_btn'] = true;
-                $data['fb_login_url'] = $loginUrl;
-            }
+            // $fb = fb_config();
+            // if($fb) {
+            //     $helper = $fb->getRedirectLoginHelper();
+            //     $permissions = ['email']; // Optional permissions
+            //     $loginUrl = $helper->getLoginUrl(URLROOT . '/users/fb_callback', $permissions);
+            //     $data['has_fb_login_btn'] = true;
+            //     $data['fb_login_url'] = $loginUrl;
+            // }
             $google_client = get_google_client();
             if($google_client && $google_client->getclientId()) {
                 $data['has_google_login_btn'] = true;
@@ -120,38 +119,38 @@ class Users extends Controller implements MainFunctionalities
         $this->view('users/profile', $data);
     }
 
-    public function fb_callback()
-    {
-        $fb = fb_config();
-        $helper = $fb->getRedirectLoginHelper();
+    // public function fb_callback()
+    // {
+    //     $fb = fb_config();
+    //     $helper = $fb->getRedirectLoginHelper();
 
-        try {
-            $accessToken = $helper->getAccessToken();
-            if (!isset($accessToken) || !$accessToken || $helper->getError()) {
-                flash('notifycationBox', $helper->getErrorReason(), 'alert alert-danger');
-                redirect('users/login');
-                exit;
-            }
-            $fb->setDefaultAccessToken($accessToken);
-            $response = $fb->get('/me?locale=en_US&fields=name,email');
-            $userNode = $response->getGraphUser();
-            $userEmail = escapeField($userNode->getField('email'));
-            $userName = escapeField($userNode->getField('name'));
-            $this->createOrLogUser(['user_email' => $userEmail, 'user_name' => $userName]);
-        } catch (Facebook\Exception\ResponseException $e) {
-            // When Graph returns an error
-            // echo 'Graph returned an error: ' . $e->getMessage();
-            flash('notifycationBox', $e->getMessage(), 'alert alert-danger');
-            redirect('users/login');
-            exit;
-        } catch (Facebook\Exception\SDKException $e) {
-            // When validation fails or other local issues
-            // echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            flash('notifycationBox', $e->getMessage(), 'alert alert-danger');
-            redirect('users/login');
-            exit;
-        }
-    }
+    //     try {
+    //         $accessToken = $helper->getAccessToken();
+    //         if (!isset($accessToken) || !$accessToken || $helper->getError()) {
+    //             flash('notifycationBox', $helper->getErrorReason(), 'alert alert-danger');
+    //             redirect('users/login');
+    //             exit;
+    //         }
+    //         $fb->setDefaultAccessToken($accessToken);
+    //         $response = $fb->get('/me?locale=en_US&fields=name,email');
+    //         $userNode = $response->getGraphUser();
+    //         $userEmail = escapeField($userNode->getField('email'));
+    //         $userName = escapeField($userNode->getField('name'));
+    //         $this->createOrLogUser(['user_email' => $userEmail, 'user_name' => $userName]);
+    //     } catch (Facebook\Exception\ResponseException $e) {
+    //         // When Graph returns an error
+    //         // echo 'Graph returned an error: ' . $e->getMessage();
+    //         flash('notifycationBox', $e->getMessage(), 'alert alert-danger');
+    //         redirect('users/login');
+    //         exit;
+    //     } catch (Facebook\Exception\SDKException $e) {
+    //         // When validation fails or other local issues
+    //         // echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    //         flash('notifycationBox', $e->getMessage(), 'alert alert-danger');
+    //         redirect('users/login');
+    //         exit;
+    //     }
+    // }
 
     public function google_callback()
     {

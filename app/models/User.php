@@ -10,12 +10,11 @@ class User
 
     public function regUser()
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = getUserData();
-        $data['name'] = trim($_POST['name']);
-        $data['email'] = trim($_POST['email']);
-        $data['password'] = trim($_POST['password']);
-        $data['confirm_password'] = trim($_POST['confirm_password']);
+        $data['name'] = escapeField($_POST['name']);
+        $data['email'] = escapeField($_POST['email']);
+        $data['password'] = escapeField($_POST['password']);
+        $data['confirm_password'] = escapeField($_POST['confirm_password']);
 
         //Validate Name
         if (empty($data['name'])) {
@@ -50,10 +49,9 @@ class User
     {
         //Proces form
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = getUserData();
-        $data['email'] = trim($_POST['email']);
-        $data['password'] = trim($_POST['password']);
+        $data['email'] = escapeField($_POST['email']);
+        $data['password'] = escapeField($_POST['password']);
 
         //Validate Email
         if (!simpleMailChech($data['email']) || !$this->findUserByEmail($data['email'])) {
@@ -61,7 +59,7 @@ class User
         }
 
         if (isset($_POST['remember'])) {
-            $data['remember'] = htmlspecialchars(trim($_POST['remember']));
+            $data['remember'] = escapeField($_POST['remember']);
         }
 
         //Validate Password
@@ -175,7 +173,6 @@ class User
 
     public function uploadUsrPhoto($user_id)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $user_id = escapeField($user_id);
         $result_is_valid_img = img_available_checker();
         if (!$result_is_valid_img['success']) return $result_is_valid_img;
@@ -287,10 +284,9 @@ class User
 
     public function changePassword($user_id)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $id = escapeField($user_id);
-        $newPassword = $_POST['newPassword'];
-        $confirmNewPassword = $_POST['confirmNewPassword'];
+        $newPassword = escapeField($_POST['newPassword']);
+        $confirmNewPassword = escapeField($_POST['confirmNewPassword']);
         $errors = [
             'password_err' => '',
             'new_password_err' => '',
@@ -313,7 +309,6 @@ class User
 
     public function resetPassword($user_id)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $id = escapeField($user_id);
         $errors = [
             'email_err' => ''
@@ -337,7 +332,6 @@ class User
 
     public function changeEmail($user_id)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $id = escapeField($user_id);
         $errors = [
             'changed_email_err' => ''
@@ -370,7 +364,6 @@ class User
 
     public function makeUserAdmin()
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $user_id = escapeField($_POST['make_admin']);
         $role = 'admin';
         $errors = [
@@ -475,7 +468,6 @@ class User
 
     public function compareUserPasswords($user_current_pass_db)
     {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         if (!isset($_POST['user_acc_password']) || !$_POST['user_acc_password']) {
             return ['success' => false, 'msg' => 'Invalid password', 'errors' => ['user_acc_pass_err' => 'Not valid']];
         }
