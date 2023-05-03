@@ -2,6 +2,14 @@
     //Load config
     require_once 'config/config.php';
 
+    $envFile = dirname(__DIR__) . '/.env';
+    if (file_exists($envFile)) {
+        $envVars = parse_ini_file($envFile);
+        foreach ($envVars as $key => $value) {
+            putenv("$key=$value");
+        }
+    }
+
     //Load Helpers
     require_once 'helpers/url_helpers.php';
     require_once 'helpers/session_helpers.php';
