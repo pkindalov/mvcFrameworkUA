@@ -6,12 +6,11 @@
      * Bind values
      * Return rows and values
     */
-
     class Database{
-        private $host = DB_HOST;
-        private $user = DB_USER;
-        private $pass = DB_PASS;
-        private $dbname = DB_NAME;
+        private $host;
+        private $user;
+        private $pass;
+        private $dbname;
 
         private $dbh;
         private $stmt;
@@ -19,6 +18,12 @@
 
         public function __construct()
         {
+
+            $this->host = getenv('DB_HOST');
+            $this->user = getenv('DB_USER');
+            $this->pass = getenv('DB_PASS');
+            $this->dbname = getenv('DB_NAME');
+
             //Set Dsn
             $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
             $options = array(
