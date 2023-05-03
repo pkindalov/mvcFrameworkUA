@@ -226,19 +226,20 @@ class Settings extends Controller implements MainFunctionalities, Crud
                 $this->view('settings/settings', $data);
                 return;
             }
-            if($this->userModel->findUserByEmail(getLoggedUserEmail())) {
+          
+            $new_user_email = escapeField($_POST['changed_email']);
+            if($this->userModel->findUserByEmail($new_user_email)) {
                 flash('notifycationBox', 'This email is used.', 'alert alert-danger');
                 redirect('settings/settings');
                 return;
             }
             $result = $this->userModel->changeEmail($user_id);
-            $data['errors'] = $result['errors'];
             if ($result['success']) {
                 flash('notifycationBox', 'Email updated successful', 'alert alert-success');
                 redirect('settings/settings');
                 return;
             }
-            flash('notifycationBox', 'Email updated failed', 'alert alert-danger');
+            flash('notifycationBox', 'Email updated failed<br />' . $result['changed_email_err'] , 'alert alert-danger');
             $this->view('settings/settings', $data);
         } catch (Exception $ex) {
             flash('notifycationBox', $ex->getMessage(), 'alert alert-danger');

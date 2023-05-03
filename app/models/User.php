@@ -337,7 +337,7 @@ class User
             'changed_email_err' => ''
         ];
         $current_user_email = escapeField($_SESSION['user_email']);
-        $updated_email = $_POST['changed_email'];
+        $updated_email = escapeField($_POST['changed_email']);
         if ($current_user_email === $updated_email) {
             $errors['changed_email_err'] = 'Both emails are equal';
             $err_msg = 'New email is the same like the current one';
@@ -357,7 +357,8 @@ class User
         setQuery(['query' => $query, 'db' => $this->db]);
         bindParams(['params' => ['user_id' => $id, 'email' => $updated_email], 'db' => $this->db]);
         if (is_exec_query_success($this->db)) {
-            return ['success' => true, 'msg' => 'Email updated successful'];
+            $_SESSION['user_email'] = $updated_email;
+            return ['success' => true, 'msg' => 'Email updated successful', 'errors' => $errors];
         }
         return ['success' => false, 'msg' => 'There is some error updating email', 'errors' => $errors];
     }
