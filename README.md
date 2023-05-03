@@ -6,7 +6,7 @@ and creating it mainly for studiyng purpose. It is based on MVC pattern and it i
 
 I had updated slightly this version from the original of the Brad from his course. I added also some stuffs like
 
-composer, facebook and google login buttons, different helper functions in helpers folder, user's settings page where you can change your profile photo, reset the password, change the password or to delete permamently your account. Refactored a little the registration and login logic. Updated the main views adding more icons.
+composer, different helper functions in helpers folder, user's settings page where you can change your profile photo, reset the password, change the password or to delete permamently your account. Refactored a little the registration and login logic. Updated the main views adding more icons.
 
 ![](assets/20211026_112436_Screenshot_281.png)
 
@@ -26,7 +26,9 @@ and then you must have a users table. I uploaded this table in sql executable fi
 
 3.You must your own settings here or to use the default one. For sending emails, Facebook login and
 Google login there are no default settings available. If you want to use these features you must create an app in facebook or google firstly. You can follow their documentation.
-Other example settings are given below on the image.
+Other example settings are given below on the image. 
+
+Important change - I moved the db settings from the image to .env file
 
 ![](assets/20211026_114951_image.png)
 
@@ -38,6 +40,8 @@ Other example settings are given below on the image.
    composer install in the command line. Then the installation must begin.
 
 Before installing the dependencies you can check them in composer.json file
+
+Important change - I removed facebook sdk package because of the incompability with the php 8
 
 ![](assets/20211026_223333_image.png)
 
