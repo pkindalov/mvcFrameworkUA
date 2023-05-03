@@ -18,7 +18,7 @@ class Core
         $url = $this->getURL();
 
         //Look in controllers for first value
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+        if (isset($url[0]) && file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
             //if exist, set as the current controller 
             $this->currentController = ucwords($url[0]);
             //Unset zero index
@@ -43,7 +43,7 @@ class Core
         }
 
         //Get params
-        $this->params = $url ? array_values($url) : ['data' => ''];
+        $this->params = $url ? array_values($url) : [];
        
         //Call a callback with array of params
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
@@ -64,6 +64,8 @@ class Core
                 }
                 return $url;
             }
+
+            return  [$this->currentController];
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
